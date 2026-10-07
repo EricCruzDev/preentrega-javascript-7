@@ -87,3 +87,15 @@ listaProductos.addEventListener("click", (event) => {
         eliminarProducto(nombre);
     }
 });
+
+const buscador = document.querySelector("#buscador");
+
+buscador.addEventListener("keyup", () => {
+    const textoBuscado = buscador.value.toLowerCase();
+
+    const productosFiltrados = productos.filter((producto) =>
+        producto.nombre.toLowerCase().includes(textoBuscado)
+    );
+
+    mostrarProductos(productosFiltrados);
+});
