@@ -67,3 +67,23 @@ formularioProducto.addEventListener("submit", (event) => {
 
     formularioProducto.reset();
 });
+
+function eliminarProducto(nombre) {
+    const indice = productos.findIndex(
+        (producto) => producto.nombre === nombre
+    );
+
+    if (indice !== -1) {
+        productos.splice(indice, 1);
+        mostrarProductos(productos);
+        mensaje.textContent = "Producto eliminado correctamente.";
+    }
+}
+
+listaProductos.addEventListener("click", (event) => {
+    if (event.target.classList.contains("btn-eliminar")) {
+        const nombre = event.target.dataset.nombre;
+
+        eliminarProducto(nombre);
+    }
+});
