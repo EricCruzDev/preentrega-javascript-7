@@ -34,3 +34,36 @@ function mostrarProductos(lista) {
 }
 
 mostrarProductos(productos);
+
+const formularioProducto = document.querySelector("#formularioProducto");
+
+const nombreInput = document.querySelector("#nombre");
+const precioInput = document.querySelector("#precio");
+const categoriaInput = document.querySelector("#categoria");
+const stockInput = document.querySelector("#stock");
+
+const mensaje = document.querySelector("#mensaje");
+
+formularioProducto.addEventListener("submit", (event) => {
+    event.preventDefault();
+
+    const nombre = nombreInput.value;
+    const precio = Number(precioInput.value);
+    const categoria = categoriaInput.value;
+    const stock = Number(stockInput.value);
+
+    const nuevoProducto = new Producto(
+        nombre,
+        precio,
+        categoria,
+        stock
+    );
+
+    productos.push(nuevoProducto);
+
+    mostrarProductos(productos);
+
+    mensaje.textContent = "Producto agregado correctamente.";
+
+    formularioProducto.reset();
+});
